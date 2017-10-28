@@ -20,14 +20,19 @@ const webpackConfigPlugins = [
 
   // Reference: http://webpack.github.io/docs/list-of-plugins.html#dedupeplugin
   // Dedupe modules in the output
-  new webpack.optimize.DedupePlugin(),
+  // new webpack.optimize.DedupePlugin(),
 
   // Reference: http://webpack.github.io/docs/list-of-plugins.html#uglifyjsplugin
   // Minify all javascript, switch loaders to minimizing mode
   new webpack.optimize.UglifyJsPlugin( {
-    compress: {
-      warnings: false
-    }
+      mangle: false,
+      compress: {
+        warnings: false
+      },
+      output: {
+        comments: true,
+        beautify: true,
+      }
   } )
 ];
 

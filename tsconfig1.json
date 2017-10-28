@@ -9,16 +9,14 @@
     "moduleResolution": "node",
     "pretty": true,
     "stripInternal": true,
-    "outDir": "ts-out",
+    "noEmitHelpers": true,
     "lib": ["es2015", "dom"],
     "typeRoots": [
       "node_modules/@types/"
     ],
     "types": [
       "angular",
-      "node",
-      "core-js",
-      "lodash"
+      "node"
     ]
   },
   "exclude": [
