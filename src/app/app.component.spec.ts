@@ -1,6 +1,6 @@
 import * as angular from 'angular';
-import { IRender, renderFactory } from 'ng-metadata/testing';
-import { NgModule, Component } from 'ng-metadata/core';
+import { IRender, renderFactory } from 'ng-metadata-baden-fix1/testing';
+import { NgModule, Component } from 'ng-metadata-baden-fix1/core';
 
 import { queryByDirective, createAngular1Module } from './shared/test-helpers';
 import { AppComponent } from './app.component';

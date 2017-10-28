@@ -39,7 +39,10 @@ Object.assign( webpackConfig, {
     // Path where bundle files will be served on production env
     publicPath: '/'
   } ),
-  tslint: Object.assign( webpackConfig.tslint, tslintConfig )
+  // tslint: Object.assign( webpackConfig.tslint, tslintConfig )
 } );
 
-module.exports = webpackConfig;
+// module.exports = webpackConfig;
+module.exports = function(options) {
+  return webpackConfig;
+}

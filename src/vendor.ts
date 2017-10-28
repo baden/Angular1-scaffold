@@ -1,4 +1,4 @@
 import 'angular';
-import 'ng-metadata/platform-browser-dynamic';
-import 'ng-metadata/core';
-import 'ng-metadata/common';
+import 'ng-metadata-baden-fix1/platform-browser-dynamic';
+import 'ng-metadata-baden-fix1/core';
+import 'ng-metadata-baden-fix1/common';

@@ -75,6 +75,7 @@ const webpackPreLoaders = [
   // @TODO codelyzer is breaking somehow source maps, allow this when it will be resolved
   {
     test: /\.ts$/,
+    enforce: 'pre',
     loader: 'tslint-loader',
     exclude: [ /node_modules/ ]
   },
@@ -87,6 +88,7 @@ const webpackPreLoaders = [
    */
   {
     test: /\.js$/,
+    enforce: 'pre',
     loader: 'source-map-loader',
     exclude: [
       // these packages have problems with their sourcemaps
@@ -175,7 +177,7 @@ const webpackConfigPlugins = [
    * See: https://webpack.github.io/docs/list-of-plugins.html#occurrenceorderplugin
    * See: https://github.com/webpack/docs/wiki/optimization#minimize
    */
-  new webpack.optimize.OccurenceOrderPlugin( true ),
+  // new webpack.optimize.OccurenceOrderPlugin( true ),
 
   /**
    * Plugin: CommonsChunkPlugin
@@ -214,6 +216,7 @@ const webpackConfigPlugins = [
    */
   new HtmlWebpackPlugin( {
     template: path.resolve( ROOT, 'index.html' ),
+    metadata: METADATA,
     chunksSortMode: 'dependency'
   } )
 
@@ -226,7 +229,7 @@ const webpackNode = {
    *
    * See: https://webpack.github.io/docs/configuration.html#node
    */
-  global: 'window',
+  global: true,
   process: true,
   crypto: 'empty',
   module: false,
@@ -248,7 +251,7 @@ const tslintConfig = {
 };
 
 module.exports = {
-  metadata: METADATA,
+  // metadata: METADATA,
   devtool: webpackDevtool,
   entry: webpackConfigEntryPoints,
   output: {
@@ -288,25 +291,27 @@ module.exports = {
      *
      * See: http://webpack.github.io/docs/configuration.html#resolve-extensions
      */
-    extensions: [ '', '.ts', '.js' ],
+    extensions: [ '.ts', '.js' ],
 
     // Make sure root is src
-    root: ROOT,
+    // root: ROOT,
 
     // remove other default values
-    modulesDirectories: [ 'node_modules' ]
+    modules: [ 'node_modules' ]
   },
   watch: true,
   module: {
-    preLoaders: webpackPreLoaders,
-    loaders: webpackConfigLoaders
+    rules: webpackConfigLoaders.concat(webpackPreLoaders)
+    // preLoaders: webpackPreLoaders,
+    // loaders: webpackConfigLoaders
   },
   devServer: {
     // This is required for webpack-dev-server. The path should
     // be an absolute path to your build destination.
+    port: 12345,
     outputPath: DESTINATION
   },
   plugins: webpackConfigPlugins,
-  tslint: tslintConfig,
+  // tslint: tslintConfig,
   node: webpackNode
 };

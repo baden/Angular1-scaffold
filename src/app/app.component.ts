@@ -1,4 +1,4 @@
-import { Component, OnInit, Inject } from 'ng-metadata/core';
+import { Component, OnInit, Inject } from 'ng-metadata-baden-fix1/core';
 
 @Component({
   selector: 'np-app',

@@ -1,4 +1,4 @@
-import { getInjectableName, bundle } from 'ng-metadata/core';
+import { getInjectableName, bundle } from 'ng-metadata-baden-fix1/core';
 import { kebabCase } from 'lodash';
 
 interface Type extends Function {
